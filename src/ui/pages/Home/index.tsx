@@ -35,16 +35,18 @@ export const Home = () => {
       >
         <ImagePicker onChange={handleFilePicked} />
 
-        <Stack
-          spacing="12px"
-          sx={{
-            marginTop: "20px",
-          }}
-        >
-          {files.map((file, index) => (
-            <ImageUploader key={index} file={file} />
-          ))}
-        </Stack>
+        {files.length > 0 && (
+          <Stack
+            spacing="12px"
+            sx={{
+              marginTop: "20px",
+            }}
+          >
+            {files.map((file, index) => (
+              <ImageUploader key={index} file={file} />
+            ))}
+          </Stack>
+        )}
       </Box>
     </Box>
   );
