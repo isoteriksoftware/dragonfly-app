@@ -3,7 +3,6 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { DefaultTheme } from "../ui/assets/styles/theme";
 import { ToastContainer } from "react-toastify";
-import { EnvironmentProvider } from "../common/config";
 import { ServiceProvider } from "../common/services";
 
 export default function Providers({ children }: PropsWithChildren) {
@@ -12,9 +11,7 @@ export default function Providers({ children }: PropsWithChildren) {
       <ThemeProvider theme={DefaultTheme}>
         <CssBaseline />
 
-        <EnvironmentProvider>
-          <ServiceProvider>{children}</ServiceProvider>
-        </EnvironmentProvider>
+        <ServiceProvider>{children}</ServiceProvider>
         <ToastContainer />
       </ThemeProvider>
     </AppRouterCacheProvider>

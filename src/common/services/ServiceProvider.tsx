@@ -1,11 +1,10 @@
 "use client";
 
 import { createContext, PropsWithChildren, useContext, useMemo } from "react";
-import { ApiService } from "./api";
-import { useEnvironment } from "../config";
+import { ApplicationApiService } from "./api";
 
 export type ServiceContextProps = {
-  apiService: ApiService;
+  apiService: ApplicationApiService;
 };
 
 export const ServiceContext = createContext<ServiceContextProps | undefined>(
@@ -13,11 +12,7 @@ export const ServiceContext = createContext<ServiceContextProps | undefined>(
 );
 
 export const ServiceProvider = ({ children }: PropsWithChildren) => {
-  const environment = useEnvironment();
-  const apiService = useMemo(
-    () => new ApiService(environment.apiBaseUrl),
-    [environment.apiBaseUrl]
-  );
+  const apiService = useMemo(() => new ApplicationApiService(), []);
 
   return (
     <ServiceContext.Provider

@@ -22,3 +22,13 @@ export const truncateFileName = (file: File, maxLength: number): string => {
   // If the file name is within the maxLength, return it as is
   return file.name;
 };
+
+/**
+ *  Converts a file to a Blob
+ * @param file  The file to convert
+ * @returns  The Blob
+ */
+export const fileToBlob = (file: File): Blob => {
+  const blob = file.slice(0, file.size, file.type);
+  return blob;
+};

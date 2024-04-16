@@ -3,9 +3,12 @@ import axios, { Axios, AxiosRequestConfig } from "axios";
 export class ApiService {
   private readonly httpClient: Axios;
 
-  constructor(baseUrl: string) {
+  constructor(baseUrl: string, apiKey?: string) {
     this.httpClient = axios.create({
       baseURL: baseUrl,
+      headers: {
+        ...(apiKey && { Authorization: apiKey }),
+      },
     });
   }
 
@@ -17,18 +20,18 @@ export class ApiService {
     return response.data;
   }
 
-  public async post<Response, Payload>(
+  public async post<Response, Payload = undefined>(
     url: string,
-    data: Payload,
+    data?: Payload,
     config?: AxiosRequestConfig
   ): Promise<Response> {
     const response = await this.httpClient.post<Response>(url, data, config);
     return response.data;
   }
 
-  public async put<Response, Payload>(
+  public async put<Response, Payload = undefined>(
     url: string,
-    data: Payload,
+    data?: Payload,
     config?: AxiosRequestConfig
   ): Promise<Response> {
     const response = await this.httpClient.put<Response>(url, data, config);
@@ -43,9 +46,9 @@ export class ApiService {
     return response.data;
   }
 
-  public async patch<Response, Payload>(
+  public async patch<Response, Payload = undefined>(
     url: string,
-    data: Payload,
+    data?: Payload,
     config?: AxiosRequestConfig
   ): Promise<Response> {
     const response = await this.httpClient.patch<Response>(url, data, config);
