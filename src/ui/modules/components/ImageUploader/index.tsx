@@ -11,8 +11,8 @@ export type ImageUploaderProps = {
 };
 
 const Component = ({ file }: ImageUploaderProps) => {
-  const [isCompleted, setIsCompleted] = useState(true);
-  const [progress, setProgress] = useState(50);
+  const [isCompleted, setIsCompleted] = useState(false);
+  const [progress, setProgress] = useState(0);
   const previewUrl = useMemo(() => URL.createObjectURL(file), [file]);
 
   return (
