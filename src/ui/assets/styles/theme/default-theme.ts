@@ -6,7 +6,7 @@ export const DefaultTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#EC99E3",
+      main: "#FF5E5E",
     },
     secondary: {
       main: "#ffffff",
@@ -22,9 +22,11 @@ export const DefaultTheme = createTheme({
     error: "#FF5E5E",
     info: "#2F80ED",
     warning: "#FFBD60",
+    text: "#171113",
 
     border: {
-      uploader: "#D2D3D3",
+      imagePicker: "#D2D3D3",
+      imageUploader: "#00000014",
     },
   },
   gradients: {

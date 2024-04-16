@@ -1,14 +1,17 @@
-import { Box, Stack, Typography } from "@mui/material";
-import { useState } from "react";
+"use client";
+
+import { Stack, Typography } from "@mui/material";
 import { FileUploader } from "react-drag-drop-files";
 import plusIcon from "../../../assets/icons/plus.svg";
-import { StylableImage } from "../StylableImage";
+import { StylableImage } from "..";
 
-export const CustomFileUploader = () => {
-  const [files, setFiles] = useState<FileList>();
+export type ImagePickerProps = {
+  onChange: (files: FileList) => void;
+};
 
-  const handleFileChange = (values: any) => {
-    console.log(values);
+export const ImagePicker = ({ onChange }: ImagePickerProps) => {
+  const handleFileChange = (data: FileList) => {
+    onChange(data);
   };
 
   return (
@@ -26,7 +29,7 @@ export const CustomFileUploader = () => {
         sx={{
           padding: "50px 30px",
           position: "relative",
-          border: (theme) => `1px dashed ${theme.colors.border.uploader}`,
+          border: (theme) => `1px dashed ${theme.colors.border.imagePicker}`,
           borderRadius: "8px",
         }}
       >

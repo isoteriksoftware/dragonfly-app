@@ -3,9 +3,11 @@ interface ThemeExtension {
     error: string;
     info: string;
     warning: string;
+    text: string;
 
     border: {
-      uploader: string;
+      imagePicker: string;
+      imageUploader: string;
     };
   };
   gradients: {

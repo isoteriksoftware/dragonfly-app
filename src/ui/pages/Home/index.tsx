@@ -1,9 +1,16 @@
 "use client";
 
-import { Box } from "@mui/material";
-import { CustomFileUploader } from "../../modules/components";
+import { Box, Stack } from "@mui/material";
+import { ImagePicker, ImageUploader } from "../../modules/components";
+import { useState } from "react";
 
 export const Home = () => {
+  const [files, setFiles] = useState<File[]>([]);
+
+  const handleFilePicked = (data: FileList) => {
+    setFiles([...files, ...Array.from(data)]);
+  };
+
   return (
     <Box
       sx={{
@@ -19,14 +26,25 @@ export const Home = () => {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: "40%",
+          width: "30%",
           background: (theme) => theme.palette.secondary.main,
           borderRadius: "8px",
           boxShadow: (theme) => theme.boxShadows.normal,
           padding: "20px",
         }}
       >
-        <CustomFileUploader />
+        <ImagePicker onChange={handleFilePicked} />
+
+        <Stack
+          spacing="12px"
+          sx={{
+            marginTop: "20px",
+          }}
+        >
+          {files.map((file, index) => (
+            <ImageUploader key={index} file={file} />
+          ))}
+        </Stack>
       </Box>
     </Box>
   );
