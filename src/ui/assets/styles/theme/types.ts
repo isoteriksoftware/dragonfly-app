@@ -1,10 +1,18 @@
-import "@mui/material/styles";
-
 interface ThemeExtension {
   colors: {
     error: string;
     info: string;
     warning: string;
+
+    border: {
+      uploader: string;
+    };
+  };
+  gradients: {
+    background: string;
+  };
+  boxShadows: {
+    normal: string;
   };
 }
 

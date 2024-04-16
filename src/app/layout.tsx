@@ -1,9 +1,7 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import type { Metadata } from "next";
-import { Urbanist } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
-
-const font = Urbanist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Dragonfly App",
@@ -17,7 +15,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={font.className}>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet"
+      />
+
+      <body>
         <Providers>{children}</Providers>
       </body>
     </html>
