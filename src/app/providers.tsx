@@ -4,6 +4,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { DefaultTheme } from "../ui/assets/styles/theme";
 import { ToastContainer } from "react-toastify";
 import { ServiceProvider } from "../common/services";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Providers({ children }: PropsWithChildren) {
   return (
@@ -11,8 +12,8 @@ export default function Providers({ children }: PropsWithChildren) {
       <ThemeProvider theme={DefaultTheme}>
         <CssBaseline />
 
-        <ServiceProvider>{children}</ServiceProvider>
         <ToastContainer />
+        <ServiceProvider>{children}</ServiceProvider>
       </ThemeProvider>
     </AppRouterCacheProvider>
   );
