@@ -31,6 +31,9 @@ const Component = ({ file }: ImageUploaderProps) => {
   const previewUrl = useMemo(() => URL.createObjectURL(file), [file]);
   const { apiService } = useService();
 
+  /**
+   * Check the status of the upload task
+   */
   const checkStatus = useCallback(
     async (taskId: string) => {
       const { status } = await apiService.post<StatusResponse, StatusPayload>(
@@ -51,6 +54,9 @@ const Component = ({ file }: ImageUploaderProps) => {
     [apiService, file.name]
   );
 
+  /**
+   * Upload the image to the server
+   */
   const doUploadTask = useCallback(async () => {
     try {
       // Update stage
@@ -87,6 +93,9 @@ const Component = ({ file }: ImageUploaderProps) => {
     }
   }, [apiService, checkStatus, file]);
 
+  /**
+   * Update progress based on the stage
+   */
   useEffect(() => {
     // Update progress based on the stage
     switch (stage) {
@@ -105,6 +114,9 @@ const Component = ({ file }: ImageUploaderProps) => {
     }
   }, [stage]);
 
+  /**
+   * Start the upload task
+   */
   useEffect(() => {
     if (stage === "idle" && !initializationRef.current) {
       doUploadTask();
