@@ -8,7 +8,7 @@ export const Home = () => {
   const [files, setFiles] = useState<File[]>([]);
 
   const handleFilePicked = (data: FileList) => {
-    setFiles([...files, ...Array.from(data)]);
+    setFiles([...Array.from(data), ...files]);
   };
 
   return (
@@ -26,11 +26,19 @@ export const Home = () => {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: "30%",
+          width: {
+            xs: "90%",
+            sm: "80%",
+            md: "70%",
+            lg: "40%",
+            xl: "30%",
+          },
+          maxHeight: "90vh",
           background: (theme) => theme.palette.secondary.main,
           borderRadius: "8px",
           boxShadow: (theme) => theme.boxShadows.normal,
           padding: "20px",
+          overflowY: "scroll",
         }}
       >
         <ImagePicker onChange={handleFilePicked} />
